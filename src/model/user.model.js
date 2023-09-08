@@ -18,4 +18,13 @@ const findOne = async (id) => {
   }
 };
 
-module.exports = { findAll, findOne };
+const addOne = async (user) => {
+  try {
+    const [result] = await database.query('INSERT INTO user SET ?', [user]);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { findAll, findOne, addOne };

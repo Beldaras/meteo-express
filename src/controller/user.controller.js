@@ -1,4 +1,4 @@
-const { findAll, findOne } = require("../model/user.model.js");
+const { findAll, findOne, addOne } = require("../model/user.model.js");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -21,4 +21,14 @@ const getOneUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getOneUser };
+const createOneUser = async (req, res) => {
+  try {
+    const user = req.body;
+    const result = await addOne(user);
+    res.send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllUsers, getOneUser, createOneUser };
