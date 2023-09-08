@@ -9,4 +9,13 @@ const findAll = async () => {
   }
 };
 
-module.exports = { findAll };
+const findOne = async (id) => {
+  try {
+    const [user] = await database.query('SELECT * FROM user WHERE id = ?', [id]);
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { findAll, findOne };

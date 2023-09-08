@@ -1,4 +1,4 @@
-const { findAll } = require("../model/user.model.js");
+const { findAll, findOne } = require("../model/user.model.js");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -9,4 +9,16 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers };
+const getOneUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if(isNaN(id)) throw new Error("Id must be a number");
+
+    const [user] = await findOne(id);
+    res.send(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllUsers, getOneUser };
