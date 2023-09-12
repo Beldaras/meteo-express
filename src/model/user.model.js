@@ -20,8 +20,9 @@ const findOne = async (id) => {
 
 const addOne = async (user) => {
   try {
-    const [result] = await database.query('INSERT INTO user SET ?', [user]);
-    return result;
+    const { email, password, firstname, lastname } = user;
+    const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
+    return { id: result.insertId, email, password, firstname, lastname } ;
   } catch (error) {
     console.log(error);
   }

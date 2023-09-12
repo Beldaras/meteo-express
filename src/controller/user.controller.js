@@ -1,5 +1,5 @@
 const { findAll, findOne, addOne } = require("../model/user.model.js");
-
+const validateUser = require("../validator/user.validator.js");
 const getAllUsers = async (req, res) => {
   try {
     const users = await findAll();
@@ -23,9 +23,10 @@ const getOneUser = async (req, res) => {
 
 const createOneUser = async (req, res) => {
   try {
-    const user = req.body;
-    const result = await addOne(user);
-    res.send(result);
+    const errors = validateUser(req.body);
+    if (errors) return res.status(400).send(errors);
+
+    const result = await addOne(req.body);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
