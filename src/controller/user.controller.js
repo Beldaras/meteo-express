@@ -27,6 +27,7 @@ const createOneUser = async (req, res) => {
     if (errors) return res.status(400).send(errors);
 
     const result = await addOne(req.body);
+    res.send(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
