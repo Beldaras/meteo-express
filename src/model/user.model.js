@@ -22,7 +22,7 @@ const addOne = async (user) => {
   try {
     const { email, password, firstname, lastname } = user;
     const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
-    return { id: result.insertId, email, password, firstname, lastname } ;
+    return { id: result.insertId, email, firstname, lastname } ;
   } catch (error) {
     console.log(error);
   }
