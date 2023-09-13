@@ -18,4 +18,14 @@ const findOne = async (id) => {
   }
 };
 
-module.exports = { findAll, findOne };
+const addOne = async (user) => {
+  try {
+    const { email, password, firstname, lastname } = user;
+    const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
+    return { id: result.insertId, email, password, firstname, lastname } ;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { findAll, findOne, addOne };
