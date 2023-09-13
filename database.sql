@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (1, 'toto@ymail.com', 'aupif', 'Toto', 'Rob');
+
 
 -- -----------------------------------------------------
 -- Table `favorites`
