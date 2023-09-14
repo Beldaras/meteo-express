@@ -11,19 +11,23 @@ const login = async (req, res) => {
     const [user] = await findUserByEmail(req.body.email);
     if (!user) return res.status(400).send({ message: "Email not found" });
 
-    const passwordMatch = await verifyPassword(user.password, req.body.password);
-    if (!passwordMatch) return res.status(400).send({ message: "Wrong password" });
+    const passwordMatch = await verifyPassword(
+      user.password,
+      req.body.password
+    );
+    if (!passwordMatch)
+      return res.status(400).send({ message: "Wrong password" });
 
     delete user.password;
 
     const token = encodeJWT(user);
-    
-    res.send(token);
+
+    res.json({ token });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
-}
+};
 
 const logout = async (req, res) => {
   try {
@@ -32,6 +36,6 @@ const logout = async (req, res) => {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });
   }
-}
+};
 
 module.exports = { login, logout };
