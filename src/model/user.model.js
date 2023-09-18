@@ -18,14 +18,23 @@ const findOne = async (id) => {
   }
 };
 
-const addOne = async (user) => {
+const findUserByEmail = async (email) => {
   try {
-    const { email, password, firstname, lastname } = user;
-    const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
-    return { id: result.insertId, email, password, firstname, lastname } ;
+    const [user] = await database.query('SELECT * FROM user WHERE email = ?', [email]);
+    return user;
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = { findAll, findOne, addOne };
+const addOne = async (user) => {
+  try {
+    const { email, password, firstname, lastname } = user;
+    const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
+    return { id: result.insertId, email, firstname, lastname } ;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { findAll, findOne, addOne, findUserByEmail };
