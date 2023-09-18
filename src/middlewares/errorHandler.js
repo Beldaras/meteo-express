@@ -6,10 +6,10 @@ const errorHandler = (error, req, res, next) => {
   if (
     errorTypes.some((errorType) => errorType.prototype.isPrototypeOf(error))
   ) {
-    return res.status(error.statusCode).json(error.details);
+    return res.status(error.statusCode).send(error.details);
   }
 
-  return res.status(500).json({ error: "Internal server error" });
+  return res.status(500).send({ error: "Internal server error" });
 };
 
 module.exports = errorHandler;
