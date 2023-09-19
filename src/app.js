@@ -1,13 +1,21 @@
+require("dotenv").config();
+require("express-async-handler");
+
 const express = require("express");
+const cookieParser = require("cookie-parser");
 
 const router = require("./router");
 
-const app = express();
+const errorHandler = require("./middlewares/errorHandler.js");
 
-app.use("/api", router);
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+
+app.use("/api", router, errorHandler);
 
 app.get("*", (req, res) => {
-  res.status(404).json({message: "Not found"});
-})
+  res.status(404).json({ message: "Not found" });
+});
 
 module.exports = app;
