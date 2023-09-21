@@ -33,6 +33,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 ENGINE = InnoDB;
 
 INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (1, 'toto@ymail.com', 'aupif', 'Toto', 'Rob');
+INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (2, 'tata@ymail.com', 'aloeilmaislong', 'Tata', 'Rob');
+INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (3, 'robert@ymail.com', 'sisilafamille', 'Robert', 'Lafamille');
+
 
 
 -- -----------------------------------------------------
@@ -42,7 +45,9 @@ DROP TABLE IF EXISTS `favorites` ;
 
 CREATE TABLE IF NOT EXISTS `favorites` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' NOT NULL,
+  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' UNIQUE NOT NULL,
+  `lat` DOUBLE NOT NULL,
+  `lon` DOUBLE NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_favorites_user_idx` (`user_id` ASC) VISIBLE,
