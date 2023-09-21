@@ -32,11 +32,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (1, 'toto@ymail.com', 'aupif', 'Toto', 'Rob');
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (2, 'tata@ymail.com', 'aloeilmaislong', 'Tata', 'Rob');
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (3, 'robert@ymail.com', 'sisilafamille', 'Robert', 'Lafamille');
-
-
 
 -- -----------------------------------------------------
 -- Table `favorites`
@@ -58,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `favorites` (`id`, `city`, `lat`, `lon`, `user_id`) VALUES (1, 'Paris', 48.8534, 2.3488, 4);
+INSERT INTO `favorites` (`id`, `city`, `lat`, `lon`, `user_id`) VALUES (1, 'Paris', 48.8534, 2.3488, 1);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
