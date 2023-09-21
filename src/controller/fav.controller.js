@@ -10,11 +10,11 @@ const getAllFavs = async (req, res) => {
   }
 };
 
+
 const createOneFav = async (req, res) => {
   try {
     // const errors = validateFav(req.body);
     // if (errors) return res.status(400).send(errors);
-
     const result = await addOne(req.body);
     res.status(201).send(result);
   } catch (error) {

@@ -24,6 +24,7 @@ const login = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Login success", user: user.firstname });
 });
 
+
 const logout = async (req, res) => {
   try {
     return res.clearCookie("auth_token").status(200).json({ message: "Logout success" });
