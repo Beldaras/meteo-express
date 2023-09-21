@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS `favorites` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `favorites` (`id`, `city`, `lat`, `lon`, `user_id`) VALUES (1, 'Paris', 48.8534, 2.3488, 4);
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
