@@ -15,10 +15,10 @@ const addOne = async (favorite) => {
   try {
     // const [user_id] = await database.query("SELECT id FROM user");
     // console.log(user_id);
-    const { city, lat, lon } = favorite;
+    const { city, lat, lon, user_id } = favorite;
     const [result] = await database.query(
-      "INSERT INTO favorites (city, lat, lon, user_id) VALUES (?, ?, ?, 4)",
-      [city, lat, lon]
+      "INSERT INTO favorites (city, lat, lon, user_id) VALUES (?, ?, ?, ?)",
+      [city, lat, lon, user_id]
     );
     return { id: result.insertId, city, lat, lon };
   } catch (error) {
