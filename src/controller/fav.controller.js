@@ -1,9 +1,11 @@
-const {findAll, addOne} = require("../model/fav.model.js");
+const {findAllByUser, addOne} = require("../model/fav.model.js");
 // const validateFav = require("../validator/fav.validator.js"); => need to create validator
 
 const getAllFavs = async (req, res) => {
   try {
-    const favs = await findAll();
+    const { id } = req.params;
+    const [favs] = await findAllByUser(id);
+    console.log(favs);
     res.send(favs);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,10 +1,11 @@
 const database = require("./database.js");
 
-const findAll = async () => {
+const findAllByUser = async (id) => {
   try {
-    const [favorites] = await database.query(
-      "SELECT * FROM favorites join user where user_id = ?",
-      [user_id] // test requête pour user courant
+    
+    const favorites = await database.query(
+      "SELECT favorites.id as favid, city, lat, lon, user_id, user.id FROM favorites join user on user_id = user.id WHERE user.id = ?",
+      [id] // test requête pour user courant
     );
     return favorites;
   } catch (error) {
@@ -25,4 +26,4 @@ const addOne = async (favorite) => {
   }
 };
 
-module.exports = { findAll, addOne };
+module.exports = { findAllByUser, addOne };
