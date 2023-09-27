@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `favorites` ;
 
 CREATE TABLE IF NOT EXISTS `favorites` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' UNIQUE NOT NULL,
+  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' NOT NULL,
   `lat` DOUBLE NOT NULL,
   `lon` DOUBLE NOT NULL,
   `user_id` INT NOT NULL,
