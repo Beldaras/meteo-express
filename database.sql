@@ -44,13 +44,14 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   `lat` DOUBLE NOT NULL,
   `lon` DOUBLE NOT NULL,
   `user_id` INT NOT NULL,
+  MAX_ROWS = 10 ;
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_favorites_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_favorites_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 INSERT INTO `favorites` (`id`, `city`, `lat`, `lon`, `user_id`) VALUES (1, 'Paris', 48.8534, 2.3488, 1);
