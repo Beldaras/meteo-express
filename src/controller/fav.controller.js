@@ -1,4 +1,4 @@
-const {findAllByUser, addOne} = require("../model/fav.model.js");
+const {findAllByUser, addOne, deleteOne} = require("../model/fav.model.js");
 // const validateFav = require("../validator/fav.validator.js"); => need to create validator
 
 const getAllFavs = async (req, res) => {
@@ -12,7 +12,6 @@ const getAllFavs = async (req, res) => {
   }
 };
 
-
 const createOneFav = async (req, res) => {
   try {
     // const errors = validateFav(req.body);
@@ -24,4 +23,14 @@ const createOneFav = async (req, res) => {
   }
 };
 
-module.exports = { getAllFavs, createOneFav };
+const deleteOneFav = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteOne(id);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllFavs, createOneFav, deleteOneFav };
