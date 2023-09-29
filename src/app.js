@@ -3,12 +3,15 @@ require("express-async-handler");
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const router = require("./router");
 
 const errorHandler = require("./middlewares/errorHandler.js");
 
 const app = express();
+
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true, optionsSuccessStatus: 200 }));
 app.use(express.json());
 app.use(cookieParser());
 
