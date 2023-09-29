@@ -5,7 +5,6 @@ const getAllFavs = async (req, res) => {
   try {
     const { id } = req.params;
     const [favs] = await findAllByUser(id);
-    console.log(favs);
     res.send(favs);
   } catch (error) {
     res.status(500).json({ message: error.message });
