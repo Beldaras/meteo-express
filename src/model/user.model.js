@@ -1,8 +1,8 @@
-const database = require('./database.js');
+const database = require("./database.js");
 
 const findAll = async () => {
   try {
-    const [users] = await database.query('SELECT * FROM user');
+    const [users] = await database.query("SELECT * FROM user");
     return users;
   } catch (error) {
     console.log(error);
@@ -11,16 +11,21 @@ const findAll = async () => {
 
 const findOne = async (id) => {
   try {
-    const [user] = await database.query('SELECT * FROM user WHERE id = ?', [id]);
+    const [user] = await database.query("SELECT * FROM user WHERE id = ?", [
+      id,
+    ]);
     return user;
   } catch (error) {
     console.log(error);
   }
 };
 
+
 const findUserByEmail = async (email) => {
   try {
-    const [user] = await database.query('SELECT * FROM user WHERE email = ?', [email]);
+    const [user] = await database.query("SELECT * FROM user WHERE email = ?", [
+      email,
+    ]);
     return user;
   } catch (error) {
     console.log(error);
@@ -30,8 +35,11 @@ const findUserByEmail = async (email) => {
 const addOne = async (user) => {
   try {
     const { email, password, firstname, lastname } = user;
-    const [result] = await database.query('INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)', [email, password, firstname, lastname]);
-    return { id: result.insertId, email, firstname, lastname } ;
+    const [result] = await database.query(
+      "INSERT INTO user (email, password, firstname, lastname) VALUES (?, ?, ?, ?)",
+      [email, password, firstname, lastname]
+    );
+    return { id: result.insertId, email, firstname, lastname };
   } catch (error) {
     console.log(error);
   }

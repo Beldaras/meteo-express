@@ -21,12 +21,15 @@ const login = asyncHandler(async (req, res) => {
   const token = encodeJWT(user);
 
   res.cookie("auth_token", token, { httpOnly: true, secure: false }); // secure: true for https (production)
-  res.status(200).json({ message: "Login success", user: user.firstname });
+  res.status(200).json(user);
 });
 
 const logout = async (req, res) => {
   try {
-    return res.clearCookie("auth_token").status(200).json({ message: "Logout success" });
+    return res
+      .clearCookie("auth_token")
+      .status(200)
+      .json({ message: "Logout success" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });

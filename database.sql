@@ -32,11 +32,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (1, 'toto@ymail.com', 'aupif', 'Toto', 'Rob');
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (2, 'tata@ymail.com', 'aloeilmaislong', 'Tata', 'Rob');
-INSERT INTO `user` (`id`, `email`, `password`, `firstname`, `lastname`) VALUES (3, 'robert@ymail.com', 'sisilafamille', 'Robert', 'Lafamille');
-
-
 
 -- -----------------------------------------------------
 -- Table `favorites`
@@ -45,18 +40,21 @@ DROP TABLE IF EXISTS `favorites` ;
 
 CREATE TABLE IF NOT EXISTS `favorites` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' UNIQUE NOT NULL,
+  `city` VARCHAR(45) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci' NOT NULL,
   `lat` DOUBLE NOT NULL,
   `lon` DOUBLE NOT NULL,
   `user_id` INT NOT NULL,
+  MAX_ROWS = 10 ;
   PRIMARY KEY (`id`, `user_id`),
   INDEX `fk_favorites_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_favorites_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
+
+INSERT INTO `favorites` (`id`, `city`, `lat`, `lon`, `user_id`) VALUES (1, 'Paris', 48.8534, 2.3488, 1);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
