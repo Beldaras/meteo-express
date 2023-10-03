@@ -12,7 +12,9 @@ J'aimerais également limiter le nombre de favoris par utilisateur et empêcher 
 ### Pour lancer le projet :
 
 ```
-git clone git@github.com:Beldaras/meteo-checker.git
+git clone git@github.com:Beldaras/meteo-express.git
+
+cd meteo-express
 
 npm install
 
@@ -33,6 +35,8 @@ With this backend, users can create an account and display their favorites citie
 ### To run the project :
 ```
 git clone git@github.com:Beldaras/meteo-express.git
+
+cd meteo-express
 
 npm install
 
