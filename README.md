@@ -1,6 +1,6 @@
 # meteo-express
 
-Voici le projet backend d'une web app météo développer avec NodeJS, Express et MySQL.  
+Voici le projet backend d'une web app météo développée avec NodeJS, Express et MySQL.  
 Vous trouverez la partie frontend ici : https://github.com/Beldaras/meteo-checker.
 
 L'objectif est de fournir une API permettant de communiquer avec une base de donnée afin d'enregistrer des utilisateurs et leurs villes favorites.
@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-N'oublier pas de paramétrer vos variables d'environnement dans un fichier .env (utilisez le .env.sample en exemple).
+N'oubliez pas de paramétrer vos variables d'environnement dans un fichier .env (utilisez le .env.sample en exemple).
 
 ## English translation
 
@@ -29,8 +29,8 @@ A backend project from scratch with nodeJS/Express and MySQL.
 The frontend project : https://github.com/Beldaras/meteo-checker
 
 The goal is to provide a server side for a meteo checker web app.  
-The frontend project below to search a city and checked her weather, and stocked the last search in browser's local storage.  
-With this backend, users can create an account and display their favorites cities weahter.
+The frontend project below to search a city and checked its weather, and stocked the last search in browser's local storage.  
+With this backend, users can create an account and display their favorite cities weahter.
 
 ### To run the project :
 ```
